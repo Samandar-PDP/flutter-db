@@ -33,4 +33,12 @@ class DbHelper {
     final map = await db.query('notes',orderBy: 'id');
     return map.map((e) => Note.fromJson(e)).toList();
   }
+  static Future<void> deleteNote(int? id) async {
+    final db = await DbHelper.db();
+    await db.delete("notes",where: "id = ?", whereArgs: ["$id"]);
+  }
+  static Future<void> updateNote(int? id, Note? note) async {
+    final db = await DbHelper.db();
+    await db.update('notes', note?.toJson() ?? {}, where: "id = ?", whereArgs: ["$id"]);
+  }
 }
