@@ -108,6 +108,19 @@ class _AddPageState extends State<AddPage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: CupertinoColors.activeBlue,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        onPressed: () {
+          showMenu(context: context, position: RelativeRect.fromLTRB(400, 800, 0, 0), items: [
+            PopupMenuItem(child: Text("Personal")),
+            PopupMenuItem(child: Text("Family")),
+            PopupMenuItem(child: Text("Study")),
+            PopupMenuItem(child: Text("Love")),
+          ]);
+        },
+        child: Text("")
+      ),
     );
   }
 

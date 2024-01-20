@@ -10,7 +10,8 @@ class DbHelper {
           id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
           title TEXT NOT NULL,
           desc TEXT NOT NULL,
-          date TEXT NOT NULL
+          date TEXT NOT NULL,
+          type TEXT NOT NULL
         )
       """
     );
@@ -18,7 +19,7 @@ class DbHelper {
   static Future<sql.Database> db() async {
     return sql.openDatabase(
       "notes.db",
-      version: 1,
+      version: 2,
       onCreate: (sql.Database db, int version) async {
         return createTable(db);
       }
